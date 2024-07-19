@@ -1,0 +1,116 @@
+/* app.css */
+
+/* Reset and basic styles */
+/* app.css */
+
+/* Reset and basic styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #3490dc, #6574cd); /* ログイン画面の背景 */
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8); /* 半透明の背景 */
+    border-radius: 10px; /* 角を丸くする */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.label-with-line {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #68d391; /* ラベルに線を追加 */
+}
+
+.label-with-line label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2d3748;
+    color: #ffffff;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a5568;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2d3748;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.alert-success {
+    background-color: #2f855a;
+    color: #ffffff;
+}
+
+.alert-danger {
+    background-color: #9f3a38;
+    color: #ffffff;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+/* ログイン画面の背景 */
+body.login-bg {
+    background: linear-gradient(to right, #82c4fa, #6574cd);
+    background-size: cover;
+    background-position: center;
+}
+
+/* 新規登録画面の背景 */
+body.register-bg {
+    background: linear-gradient(to right, #6574cd, #e53e3e);
+    background-size: cover;
+    background-position: center;
+}
