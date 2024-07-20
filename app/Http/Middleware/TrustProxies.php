@@ -9,7 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 class TrustProxies
 {
 
-    protected $proxies = '*';
+    protected $proxies = '*'; // すべてのプロキシを信頼する設定
+    protected $headers = \Illuminate\Http\Request::HEADER_X_FORWARDED_ALL;
     /**
      * Handle an incoming request.
      *
