@@ -52,14 +52,9 @@ return [
     |
     */
 
-<<<<<<< HEAD
-    'url' => env('APP_URL', 'https://localhost'),
-    'asset_url' => env('ASSET_URL'), 
-=======
     'url' => env('APP_URL', 'http://localhost'),
     'asset_url' => env('ASSET_URL'),
 
->>>>>>> 6c453e3714931fc77c440fc28035dbbf9a0ffa22
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
