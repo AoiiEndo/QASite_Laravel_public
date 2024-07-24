@@ -19,7 +19,7 @@
             dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
         }
     </script>
-    {{-- <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script> --}}
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     @yield('scripts')
 </body>
 </html>
