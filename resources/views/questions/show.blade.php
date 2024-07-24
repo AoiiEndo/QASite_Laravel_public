@@ -15,7 +15,7 @@
         </div>
         <hr style="border:none;border-top:dashed 2px;height:1px;margin:20px 0;">
         <div class="content">
-            <p>{{ $question->content }}</p>
+            {!! preg_replace('/\$(.*?)\$/', '\\( $1 \\)', $question->content) !!}
         </div>
     </div>
 
@@ -50,27 +50,40 @@
 @endsection
 
 @section('styles')
-<style>
-    .question-detail, .answer, .answer-form {
-        border: 1px solid #ddd;
-        padding: 15px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        background-color: #2b3649;
-    }
-    .tags .tag {
-        display: inline-block;
-        background-color: #4a5568;
-        color: #fff;
-        border-radius: 5px;
-        padding: 5px 10px;
-        margin-right: 5px;
-    }
-    .meta span {
-        margin-right: 50px;
-    }
-    .best {
-        border-color: gold;
-    }
-</style>
+    <style>
+        .question-detail, .answer, .answer-form {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #2b3649;
+        }
+        .tags .tag {
+            display: inline-block;
+            background-color: #4a5568;
+            color: #fff;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-right: 5px;
+        }
+        .meta span {
+            margin-right: 50px;
+        }
+        .best {
+            border-color: gold;
+        }
+        .content {
+            border: 1px solid #4a5568;
+            padding: 10px;
+            background: #1a202c;
+            overflow: auto;
+            white-space: pre-line;
+            width: calc(100% - 20px);
+            border-radius: 5px;
+        }
+    </style>
+@endsection
+@section('scripts')
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script src="{{ asset('js/questions/questionShow.js') }}"></script>
 @endsection
