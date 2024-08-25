@@ -11,7 +11,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TestCategoryController;
 
 // ログイン
-Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
+// Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -20,14 +20,15 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
+Route::get('/', [QuestionController::class, 'index'])->name('questions.index');
+Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
+
 Route::middleware('auth')->group(function () {
     // 質問
-    Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
     Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create');
     Route::post('/questions', [QuestionController::class, 'store'])->name('questions.store');
 
     // 回答
-    Route::get('/questions/{id}', [QuestionController::class, 'show'])->name('questions.show');
     Route::post('/questions/{id}/answer', [QuestionController::class, 'answer'])->name('answers.store');
     Route::post('/answers/{id}', [AnswerController::class, 'markAsBest'])->name('answers.best');
 
@@ -46,3 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::post('tests/store', [TestController::class, 'storeTest'])->name('tests.store');
     Route::post('tests/update/{id}', [TestController::class, 'update'])->name('tests.update');
 });
+
+// /questions/createより先に持ってくると拾われる
+Route::get('/questions/{id}', [QuestionController::class, 'show'])->name('questions.show');

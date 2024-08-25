@@ -34,31 +34,16 @@ function removeTag(tag) {
     updateTagList(tags);
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    // MathJaxの設定
-    MathJax = {
-        tex: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']],
-            displayMath: [['$$', '$$'], ['\\[', '\\]']]
-        }
-    };
-});
-
-const contentInput = document.getElementById('content');
-const preview = document.getElementById('preview');
-
-contentInput.addEventListener('input', function() {
-    const content = contentInput.value;
-    preview.innerHTML = '';
-    try {
-        // MathJax.typesetClear();
-        MathJax.typesetPromise([preview, content]).then(() => {
-            // 成功時の処理
-            MathJax.typesetPromise([preview]); // プレビュー内の全ての数式を再描画
-        }).catch((err) => {
-            console.error('Error rendering LaTeX:', err);
-        });
-    } catch (err) {
-        console.error('Error rendering LaTeX:', err);
-    }
+document.getElementById('content').addEventListener('input', function() {
+    var input = document.getElementById('content').value;
+    var preview = document.getElementById('preview');
+    
+    // MathJaxに渡すHTML内容を設定
+    var latexContent = input.replace(/\$(.*?)\$/g, '\\[$1\\]');
+    preview.innerHTML =  latexContent;
+    
+    // MathJaxで再レンダリング
+    MathJax.typesetPromise([preview]).catch(function(err) {
+        console.log(err.message);
+    });
 });

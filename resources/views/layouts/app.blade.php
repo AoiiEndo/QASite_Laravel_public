@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ 'Q&A Site' }}</title>
+    <title>高等教育者向け質問サイト</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('styles')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
@@ -33,6 +33,7 @@
             dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
         }
     </script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     @yield('scripts')
 </body>
 </html>
