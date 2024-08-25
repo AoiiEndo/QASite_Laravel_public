@@ -215,3 +215,33 @@ button[type="submit"]:hover {
     padding: 8px;
     border-radius: 5px;
 }
+
+.auth-links {
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+}
+
+.auth-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-button:hover {
+    background-color: #0056b3;
+}
+.preview {
+    border: 1px solid #4a5568;
+    padding: 10px;
+    min-height: 50px;
+    max-height: 200px; /* 最大高さを設定 */
+    background: #1a202c;
+    overflow: auto; /* スクロールを有効にする */
+    white-space: pre-wrap; /* 改行を保持する */
+    border-radius: 5px;
+    width: calc(100% - 20px);
+}
