@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\TestCategoryController;
 
 // ログイン
 // Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
@@ -36,6 +38,14 @@ Route::middleware('auth')->group(function () {
     // プロフィール
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
+
+    // テスト関連
+    Route::post('categories/store', [TestCategoryController::class, 'store'])->name('categories.store');
+    Route::get('categories/list', [TestController::class, 'getCategories'])->name('categories.list');
+    Route::post('categories/update/{id}', [TestCategoryController::class, 'update'])->name('categories.update');
+    Route::post('tests/results', [TestController::class, 'results'])->name('tests.results');
+    Route::post('tests/store', [TestController::class, 'storeTest'])->name('tests.store');
+    Route::post('tests/update/{id}', [TestController::class, 'update'])->name('tests.update');
 });
 
 // /questions/createより先に持ってくると拾われる
