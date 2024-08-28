@@ -97,10 +97,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
         .catch(error => {
-            console.log(error);
             if (error.errors) {
                 const messages = Object.values(error.errors).flat();
-                alert(messages.join('\n'));
+                alert("エラーが発生しました。");
             } else {
                 alert('予期しないエラーが発生しました。');
             }
@@ -471,7 +470,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 alert(data.message);
                 // テーブルの再描画
-                console.log(data.test);
                 updateTestTable(data.test);
                 updateCategoryTable(data.categories);
                 updateCategorySelectBox()

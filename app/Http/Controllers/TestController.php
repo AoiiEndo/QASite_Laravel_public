@@ -7,7 +7,6 @@ use App\Models\TestCategory;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Auth;
-use Log;
 
 class TestController extends Controller
 {

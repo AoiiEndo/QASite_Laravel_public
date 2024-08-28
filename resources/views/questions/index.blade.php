@@ -21,7 +21,19 @@
                 </div>
                 <div class="info">
                     <span class="created-at" data-timestamp="{{ $question->created_at }}">{{ $question->created_at->diffForHumans() }}</span>
-                    <span>{{ $question->user->name }}</span>
+                    @if(in_array($question->user->id, $followedUserIds))
+                        <span class="followed-user">
+                            {{ $question->user->name }}
+                            <span style="color:#fe0505">&hearts;</span>
+                            {{-- <span style="color:#fffb00">&#9733;</span> --}}
+                        </span>
+                    @else
+                        <span class="followed-user">
+                            {{ $question->user->name }}
+                            <span style="color:#fdfdfd">&hearts;</span>
+                            {{-- <span style="color:#fffb00">&#9733;</span> --}}
+                        </span>
+                    @endif
                 </div>
             </div>
         @endforeach
