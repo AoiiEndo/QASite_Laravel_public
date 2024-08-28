@@ -9,26 +9,28 @@
                 </div>
                 <div class="info">
                     <span class="created-at" data-timestamp="{{ $exercise->created_at }}">{{ $exercise->created_at->diffForHumans() }}</span>
-                    @if(in_array($exercise->user->id, $followedUserIds))
-                        <span class="followed-user">
-                            {{ $exercise->user->name }}
-                            <span style="color:#fe0505">&hearts;</span>
-                            @if (in_array($exercise->id, $favoriteExerciseIds))
-                                <span style="color:#fffb00">&#9733;</span>
-                            @else
-                                <span style="color:#fdfdfd">&#9733;</span>
-                            @endif
-                        </span>
-                    @else
-                        <span class="followed-user">
-                            {{ $exercise->user->name }}
-                            <span style="color:#fdfdfd">&hearts;</span>
-                            @if (in_array($exercise->id, $favoriteExerciseIds))
-                                <span style="color:#fffb00">&#9733;</span>
-                            @else
-                                <span style="color:#fdfdfd">&#9733;</span>
-                            @endif
-                        </span>
+                    @if ($exercise->user->id !== auth()->id())
+                        @if (in_array($exercise->user->id, $followedUserIds))
+                            <span class="followed-user">
+                                {{ $exercise->user->name }}
+                                <span style="color:#fe0505">&hearts;</span>
+                                @if (in_array($exercise->id, $favoriteExerciseIds))
+                                    <span style="color:#fffb00">&#9733;</span>
+                                @else
+                                    <span style="color:#fdfdfd">&#9733;</span>
+                                @endif
+                            </span>
+                        @else
+                            <span class="followed-user">
+                                {{ $exercise->user->name }}
+                                <span style="color:#fdfdfd">&hearts;</span>
+                                @if (in_array($exercise->id, $favoriteExerciseIds))
+                                    <span style="color:#fffb00">&#9733;</span>
+                                @else
+                                    <span style="color:#fdfdfd">&#9733;</span>
+                                @endif
+                            </span>
+                        @endif
                     @endif
                 </div>
             </div>
