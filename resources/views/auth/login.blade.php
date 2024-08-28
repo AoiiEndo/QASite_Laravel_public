@@ -1,5 +1,3 @@
-<!-- resources/views/auth/login.blade.php -->
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -29,8 +27,6 @@
 
             <button type="submit" class="btn">ログイン</button>
         </form>
-
-        <!-- 新規作成画面へのリンク -->
         <a href="{{ route('register') }}" class="btn">新規作成画面へ</a>
     </div>
 </body>

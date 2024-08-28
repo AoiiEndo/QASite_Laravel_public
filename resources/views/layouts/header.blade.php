@@ -13,20 +13,10 @@
     @auth
         <div class="hamburger-menu" onclick="toggleDropdown()">
             <span>{{ Auth::user()->name ?? 'guest' }}</span>
-            <div class="menu-toggle" id="menuToggle">
-                <!-- ハンバーガーアイコン -->
-                <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
-                    <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-                </svg>
-                <!-- バッテンアイコン -->
-                <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
-                    <path d="M18.364 5.636l-1.028-1.028L12 8.934 6.664 3.6 5.636 4.628 11.971 11l-6.335 6.335 1.028 1.028 6.335-6.335 6.335 6.335 1.028-1.028-6.335-6.335z"/>
-                </svg>
-            </div>
-            <div class="dropdown-menu" id="dropdownMenu">
+            <div class="dropdown-menu" style="background-color: #1a202c;">
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit">Logout</button>
+                    <button type="submit" class="logout-button">Logout</button>
                 </form>
             </div>
         </div>
