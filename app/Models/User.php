@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Test::class);
     }
+
+    public function favoriteExercises()
+    {
+        return $this->belongsToMany(Exercise::class, 'exercises_favorite', 'user_id', 'exercises_id');
+    }
 }
