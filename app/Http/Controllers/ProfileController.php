@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\TestCategory;
 use App\Models\Exercise;
 use App\Models\ExerciseFavorite;
+use App\Models\Follow;
+use App\Models\Question;
+use Auth;
 
 class ProfileController extends Controller
 {
@@ -17,7 +21,7 @@ class ProfileController extends Controller
         $categories = TestCategory::where('user_id', $user->id)->get();
 
         $testDates = $tests->pluck('test_date')->map(function($date) {
-            return \Carbon\Carbon::parse($date)->format('Y-m-d');
+            return Carbon::parse($date)->format('Y-m-d');
         })->toArray();
     
         $testScores = $tests->pluck('actual_score')->toArray();
@@ -41,13 +45,18 @@ class ProfileController extends Controller
             }
         }
 
-        $bestAnswerCount = \App\Models\Question::where('best_answer_id', $user->id)->count();
+        $bestAnswerCount = Question::where('best_answer_id', $user->id)->count();
 
-        $favoriteExerciseCount = \App\Models\ExerciseFavorite::where('user_id', $user->id)
+        $favoriteExerciseCount = ExerciseFavorite::where('user_id', $user->id)
             ->get()
             ->map(function ($favorite) {
                 return count(json_decode($favorite->exercises_id, true));
             })->sum();
+
+        $followedUserIds = Auth::check() ? Auth::user()->follows->pluck('followed_user_id')->toArray() : [];
+        $followingCount = Auth::user()->follows()->count();
+        $followerCount = Follow::where('followed_user_id', $user->id)->count();
+
 
         return view('profile.index', compact('user',
                                             'questions',
@@ -58,7 +67,10 @@ class ProfileController extends Controller
                                             'exercises',
                                             'favoriteExercises',
                                             'bestAnswerCount',
-                                            'favoriteExerciseCount'
+                                            'favoriteExerciseCount',
+                                            'followedUserIds',
+                                            'followingCount',
+                                            'followerCount'
                                         ));
     }
 }

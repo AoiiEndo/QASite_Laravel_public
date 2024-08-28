@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exercise;
+use App\Models\ExerciseFavorite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Log;
 
 class ExerciseController extends Controller
 {
@@ -13,7 +13,17 @@ class ExerciseController extends Controller
     public function index()
     {
         $exercises = Exercise::public()->orderBy('created_at', 'desc')->get();
-        return view('exercises.index', compact('exercises'));
+        $followedUserIds = Auth::check() ? Auth::user()->follows->pluck('followed_user_id')->toArray() : [];
+        $favoriteExerciseIds = [];
+
+        if (Auth::check()) {
+            $favoriteExercisesRecord = ExerciseFavorite::where('user_id', Auth::id())->first();
+
+            if ($favoriteExercisesRecord && !empty($favoriteExercisesRecord->exercises_id)) {
+                $favoriteExerciseIds = json_decode($favoriteExercisesRecord->exercises_id, true);
+            }
+        }
+        return view('exercises.index', compact('exercises', 'followedUserIds', 'favoriteExerciseIds'));
     }
 
     public function create()

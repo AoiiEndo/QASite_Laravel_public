@@ -11,6 +11,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TestCategoryController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ExerciseFavoriteController;
+use App\Http\Controllers\FollowController;
 
 // ログイン
 // Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
@@ -61,8 +62,13 @@ Route::middleware('auth')->group(function () {
     Route::get('exercises/favorites', [ExerciseFavoriteController::class, 'index'])->name('exercises.favorites.index');
     Route::post('exercises/favorites/{id}', [ExerciseFavoriteController::class, 'toggleFavorite'])->name('exercises.favorites.toggle');
     // Route::delete('exercises/favorites/{exercise}', [ExerciseFavoriteController::class, 'destroy'])->name('exercises.favorites.destroy');
+
+    // フォロー機能
+    Route::post('/follow', [FollowController::class, 'follow'])->name('follow.follow');
+    Route::post('/unfollow', [FollowController::class, 'unfollow'])->name('follow.unfollow');
+    Route::get('/following', [FollowController::class, 'getFollowing'])->name('following');
+    Route::get('/followers', [FollowController::class, 'getFollowers'])->name('followers');
 });
 
-// /questions/createより先に持ってくると拾われる
 Route::get('/questions/{id}', [QuestionController::class, 'show'])->name('questions.show');
 Route::get('/exercises/{id}', [ExerciseController::class, 'show'])->name('exercises.show');
