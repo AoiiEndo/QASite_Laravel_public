@@ -12,6 +12,38 @@
         <div class="meta">
             <span>{{ $question->created_at->diffForHumans() }}</span>
             <span>{{ $question->user->name }}</span>
+            @if (auth()->check() && auth()->id() !== $question->user_id)
+                <div class="follow-buttons">
+                    @php
+                        $isFollowing = \App\Models\Follow::where('user_id', auth()->id())
+                                                        ->where('followed_user_id', $question->user_id)
+                                                        ->exists();
+                    @endphp
+                    @if ($isFollowing)
+                        <form id="unfollow-form" method="POST" action="{{ route('follow.unfollow') }}" style="display:block; padding: 0!important;">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ $question->user_id }}">
+                            <button type="submit" id="unfollow-btn">フォローをやめる</button>
+                        </form>
+                        <form id="follow-form" method="POST" action="{{ route('follow.follow') }}" style="display:none; padding: 0!important;">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ $question->user_id }}">
+                            <button type="submit" id="follow-btn">フォローする</button>
+                        </form>
+                    @else
+                        <form id="unfollow-form" method="POST" action="{{ route('follow.unfollow') }}" style="display:none; padding: 0!important;">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ $question->user_id }}">
+                            <button type="submit" id="unfollow-btn">フォローをやめる</button>
+                        </form>
+                        <form id="follow-form" method="POST" action="{{ route('follow.follow') }}" style="display:block; padding: 0!important;">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ $question->user_id }}">
+                            <button type="submit" id="follow-btn">フォローする</button>
+                        </form>
+                    @endif
+                </div>
+            @endif
         </div>
         <hr style="border:none;border-top:dashed 2px;height:1px;margin:20px 0;">
         <div class="content">
@@ -86,4 +118,5 @@
 @section('scripts')
     <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script src="{{ asset('js/questions/questionShow.js') }}"></script>
+    <script src="{{ asset('js/follows/follow.js') }}"></script>
 @endsection

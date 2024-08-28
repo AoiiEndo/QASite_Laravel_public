@@ -18,6 +18,14 @@
                             <p class="stat-number">{{ $favoriteExerciseCount }}</p>
                             <p class="stat-label">お気に入り登録</p>
                         </div>
+                        <div class="stat-item">
+                            <p class="stat-number">{{ $followingCount }}</p>
+                            <p class="stat-label">フォロー</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">{{ $followerCount }}</p>
+                            <p class="stat-label">フォロワー</p>
+                        </div>
                     </div>
                 </div>
                 <div class="profile-actions">
@@ -59,7 +67,7 @@
         margin-bottom: 20px;
         border-radius: 5px;
         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-        text-align: center; /* 中央揃えにしてみます */
+        text-align: center;
     }
 
     .profile-info {

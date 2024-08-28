@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新規ユーザ登録</title>
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-    <!-- app.cssはあなたのスタイルシートのパスに置き換えてください -->
 </head>
 <body class="register-bg">
     <div class="container">
@@ -44,8 +43,6 @@
 
             <button type="submit" class="btn">新規登録</button>
         </form>
-
-        <!-- ログイン画面へのリンク -->
         <a href="{{ route('login') }}" class="btn">ログイン画面へ</a>
     </div>
 </body>

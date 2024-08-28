@@ -6,7 +6,6 @@ use App\Models\Exercise;
 use App\Models\ExerciseFavorite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Log;
 
 class ExerciseFavoriteController extends Controller
 {
@@ -19,7 +18,6 @@ class ExerciseFavoriteController extends Controller
 
     public function toggleFavorite(Request $request)
     {
-        Log::info($request);
         $userId = auth()->id();
         $exerciseId = $request->input('exercise_id');
 

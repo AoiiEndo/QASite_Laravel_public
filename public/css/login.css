@@ -1,9 +1,3 @@
-/* app.css */
-
-/* Reset and basic styles */
-/* app.css */
-
-/* Reset and basic styles */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -25,8 +19,8 @@ body {
     width: 100%;
     max-width: 400px;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8); /* 半透明の背景 */
-    border-radius: 10px; /* 角を丸くする */
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -94,21 +88,18 @@ body {
     color: #ffffff;
 }
 
-/* Responsive utilities */
 @media (max-width: 768px) {
     .container {
         padding: 10px;
     }
 }
 
-/* ログイン画面の背景 */
 body.login-bg {
     background: linear-gradient(to right, #82c4fa, #6574cd);
     background-size: cover;
     background-position: center;
 }
 
-/* 新規登録画面の背景 */
 body.register-bg {
     background: linear-gradient(to right, #6574cd, #e53e3e);
     background-size: cover;

@@ -9,7 +9,14 @@
                 </div>
                 <div class="info">
                     <span class="created-at" data-timestamp="{{ $favoriteExercise->created_at }}">{{ $favoriteExercise->created_at->diffForHumans() }}</span>
-                    <span>{{ $favoriteExercise->user->name }}</span>
+                    @if(in_array($favoriteExercise->user->id, $followedUserIds))
+                        <span class="followed-user">
+                            {{ $favoriteExercise->user->name }}
+                            <span style="color:#fe0505">&hearts;</span>
+                        </span>
+                    @else
+                        <span>{{ $favoriteExercise->user->name }}</span>
+                    @endif
                 </div>
             </div>
         @endforeach

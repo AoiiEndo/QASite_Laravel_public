@@ -44,6 +44,5 @@ document.getElementById('content').addEventListener('input', function() {
     
     // MathJaxで再レンダリング
     MathJax.typesetPromise([preview]).catch(function(err) {
-        console.log(err.message);
     });
 });

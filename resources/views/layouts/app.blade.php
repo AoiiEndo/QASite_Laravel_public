@@ -33,11 +33,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
     <script>
         function toggleDropdown() {
-            const menuToggle = document.getElementById('menuToggle');
-            const dropdownMenu = document.getElementById('dropdownMenu');
-            
-            menuToggle.classList.toggle('active');
-            dropdownMenu.classList.toggle('active');
+            const menu = document.querySelector('.hamburger-menu');
+            menu.classList.toggle('active');
         }
     </script>
     <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>

@@ -4,15 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\ExerciseFavorite;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
     // 一覧表示
     public function index() {
         $questions = Question::orderBy('created_at', 'desc')->paginate(25);
-        return view('questions.index', ['questions' => $questions]);
+        $followedUserIds = Auth::check() ? Auth::user()->follows->pluck('followed_user_id')->toArray() : [];
+
+        $favoriteExerciseIds = [];
+
+        if (Auth::check()) {
+            $favoriteExercisesRecord = ExerciseFavorite::where('user_id', Auth::id())->first();
+
+            if ($favoriteExercisesRecord && !empty($favoriteExercisesRecord->exercises_id)) {
+                $favoriteExerciseIds = json_decode($favoriteExercisesRecord->exercises_id, true);
+            }
+        }
+    
+        return view('questions.index', [
+            'questions' => $questions,
+            'followedUserIds' => $followedUserIds,
+            'favoriteExerciseIds' => $favoriteExerciseIds
+        ]);
     }
 
     // 質問作成画面遷移
@@ -75,7 +92,6 @@ class QuestionController extends Controller
     {
         $query = $request->input('query');
 
-        // Perform search logic, example:
         $questions = Question::where('title', 'like', "%$query%")
                             ->orWhereJsonContains('tags', $query)
                             ->orderBy('created_at', 'desc')
