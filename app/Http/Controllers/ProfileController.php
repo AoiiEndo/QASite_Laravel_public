@@ -57,6 +57,16 @@ class ProfileController extends Controller
         $followingCount = Auth::user()->follows()->count();
         $followerCount = Follow::where('followed_user_id', $user->id)->count();
 
+        $favoriteExerciseIds = [];
+
+        if (Auth::check()) {
+            $favoriteExercisesRecord = ExerciseFavorite::where('user_id', Auth::id())->first();
+
+            if ($favoriteExercisesRecord && !empty($favoriteExercisesRecord->exercises_id)) {
+                $favoriteExerciseIds = json_decode($favoriteExercisesRecord->exercises_id, true);
+            }
+        }
+
 
         return view('profile.index', compact('user',
                                             'questions',
@@ -70,7 +80,8 @@ class ProfileController extends Controller
                                             'favoriteExerciseCount',
                                             'followedUserIds',
                                             'followingCount',
-                                            'followerCount'
+                                            'followerCount',
+                                            'favoriteExerciseIds'
                                         ));
     }
 }
