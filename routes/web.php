@@ -9,6 +9,8 @@ use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TestCategoryController;
+use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\ExerciseFavoriteController;
 
 // ログイン
 // Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
@@ -46,7 +48,21 @@ Route::middleware('auth')->group(function () {
     Route::post('tests/results', [TestController::class, 'results'])->name('tests.results');
     Route::post('tests/store', [TestController::class, 'storeTest'])->name('tests.store');
     Route::post('tests/update/{id}', [TestController::class, 'update'])->name('tests.update');
+
+    // 演習問題
+    Route::get('exercises', [ExerciseController::class, 'index'])->name('exercises.index');
+    Route::get('exercises/create', [ExerciseController::class, 'create'])->name('exercises.create');
+    Route::get('exercises/get', [ExerciseController::class, 'getExercises'])->name('exercises.get');
+    Route::post('exercises/store', [ExerciseController::class, 'store'])->name('exercises.store');
+    Route::post('exercises/edit', [ExerciseController::class, 'edit'])->name('exercises.edit');
+    Route::post('exercises/search', [ExerciseController::class, 'search'])->name('exercises.search');
+    Route::post('exercises/destroy', [ExerciseController::class, 'destroy'])->name('exercises.destroy');
+    
+    Route::get('exercises/favorites', [ExerciseFavoriteController::class, 'index'])->name('exercises.favorites.index');
+    Route::post('exercises/favorites/{id}', [ExerciseFavoriteController::class, 'toggleFavorite'])->name('exercises.favorites.toggle');
+    // Route::delete('exercises/favorites/{exercise}', [ExerciseFavoriteController::class, 'destroy'])->name('exercises.favorites.destroy');
 });
 
 // /questions/createより先に持ってくると拾われる
 Route::get('/questions/{id}', [QuestionController::class, 'show'])->name('questions.show');
+Route::get('/exercises/{id}', [ExerciseController::class, 'show'])->name('exercises.show');
