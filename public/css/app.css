@@ -1,6 +1,3 @@
-/* app.css */
-
-/* Body styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #1a202c !important;
@@ -9,14 +6,12 @@ body {
     padding: 0;
 }
 
-/* Container styles */
 .container {
     width: 80%;
     margin: auto;
     padding: 20px;
 }
 
-/* Header styles */
 .header {
     display: flex;
     justify-content: space-between;
@@ -31,8 +26,7 @@ body {
     top: 0;
     width: 100%;
     z-index: 1000;
-    /* background-color: #fff; ヘッダーの背景色 */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影効果 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo img {
@@ -46,42 +40,10 @@ body {
     margin-left: 20px;
 }
 
-.hamburger-menu {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.hamburger-menu > span {
-    margin-right: 10px;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    right: 100px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-}
-
-.dropdown-menu a {
-    display: block;
-    padding: 10px 20px;
-    color: #333;
-    text-decoration: none;
-}
-
-.hamburger-menu:hover .dropdown-menu {
-    display: block;
-}
-
-/* Main content area styles */
 .main-content {
     margin-top: 80px;
 }
 
-/* Question list styles */
 .question-list {
     list-style-type: none;
     padding: 0;
@@ -139,7 +101,6 @@ body {
     margin-top: 5px;
 }
 
-/* Form styles */
 form {
     background-color: #2b3649;
     padding: 20px;
@@ -176,7 +137,6 @@ button[type="submit"] {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    /* margin: 0 10px; */
     margin-top: 10px;
 }
 
@@ -209,7 +169,6 @@ button[type="submit"]:hover {
     align-items: flex-end;
 }
 
-/* Additional styles */
 .current-page-background {
     background-color: limegreen;
     padding: 8px;
@@ -238,10 +197,65 @@ button[type="submit"]:hover {
     border: 1px solid #4a5568;
     padding: 10px;
     min-height: 50px;
-    max-height: 200px; /* 最大高さを設定 */
+    max-height: 200px;
     background: #1a202c;
-    overflow: auto; /* スクロールを有効にする */
-    white-space: pre-wrap; /* 改行を保持する */
+    overflow: auto;
+    white-space: pre-wrap;
     border-radius: 5px;
     width: calc(100% - 20px);
+}
+
+/* ハンバーガーメニューのスタイル */
+.hamburger-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1001; /* ドロップダウンメニューよりも前面に表示 */
+}
+
+.menu-toggle {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hamburger-icon,
+.close-icon {
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.close-icon {
+    display: none;
+}
+
+.dropdown-menu {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    transition: right 0.3s ease;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.dropdown-menu form {
+    margin: 0;
+}
+
+.menu-toggle.active .hamburger-icon {
+    display: none;
+}
+
+.menu-toggle.active .close-icon {
+    display: block;
+}
+
+.dropdown-menu.active {
+    right: 0;
 }

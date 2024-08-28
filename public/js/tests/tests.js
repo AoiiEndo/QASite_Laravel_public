@@ -11,21 +11,36 @@ document.addEventListener('DOMContentLoaded', function () {
     // ###############################################
     const myQuestionsBtn = document.getElementById('my-questions-btn');
     const testsBtn = document.getElementById('tests-btn');
+    const exerciseBtn = document.getElementById('my-exercise-btn');
     const myQuestionsDiv = document.getElementById('question-list');
     const testsDiv = document.getElementById('tests');
+    const exerciseDiv = document.getElementById('exercises-list');
 
     function showMyQuestions() {
         myQuestionsDiv.style.display = 'block';
         testsDiv.style.display = 'none';
+        exerciseDiv.style.display = 'none';
         myQuestionsBtn.classList.add('active');
         testsBtn.classList.remove('active');
+        exerciseBtn.classList.remove('active');
     }
 
     function showTests() {
         myQuestionsDiv.style.display = 'none';
         testsDiv.style.display = 'block';
+        exerciseDiv.style.display = 'none';
         myQuestionsBtn.classList.remove('active');
         testsBtn.classList.add('active');
+        exerciseBtn.classList.remove('active');
+    }
+
+    function showExercise() {
+        myQuestionsDiv.style.display = 'none';
+        testsDiv.style.display = 'none';
+        exerciseDiv.style.display = 'block';
+        myQuestionsBtn.classList.remove('active');
+        testsBtn.classList.remove('active');
+        exerciseBtn.classList.add('active');
     }
 
     // 初期表示で My Questions タブを表示
@@ -39,6 +54,11 @@ document.addEventListener('DOMContentLoaded', function () {
     testsBtn.addEventListener('click', function(event) {
         event.preventDefault();
         showTests();
+    });
+
+    exerciseBtn.addEventListener('click', function(event) {
+        event.preventDefault();
+        showExercise();
     });
 
     // ###############################################
@@ -265,9 +285,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // ###############################################
     const testManagementBtn = document.getElementById('test-management-btn');
     const testResultsBtn = document.getElementById('test-results-btn');
+    const categoryListBtn = document.getElementById('category-list-btn');
     const testManagementDiv = document.getElementById('test-management');
     const testResultsDiv = document.getElementById('test-results');
-    const categoryListBtn = document.getElementById('category-list-btn');
     const categoryListDiv = document.getElementById('category-list');
 
     function showTestManagement() {
@@ -303,6 +323,34 @@ document.addEventListener('DOMContentLoaded', function () {
     testManagementBtn.addEventListener('click', showTestManagement);
     testResultsBtn.addEventListener('click', showTestResults);
     categoryListBtn.addEventListener('click', showCategoryList);
+
+    // ###############################################
+    // 作成した演習問題　& お気に入り　タブ切り替え
+    // ###############################################
+    const exerciseManagementBtn = document.getElementById('exercise-management-btn');
+    const exerciseFavoriteBtn = document.getElementById('exercise-favorite-btn');
+    const exercisesListDiv = document.getElementById('exercises-management');
+    const exercisesFavoriteListDiv = document.getElementById('exercises-favorite');
+
+    function showExercisesList() {
+        exerciseManagementBtn.classList.add('active');
+        exerciseFavoriteBtn.classList.remove('active');
+        exercisesListDiv.style.display = 'block';
+        exercisesFavoriteListDiv.style.display = 'none';
+    }
+
+    function showExercisesFavoriteList() {
+        exerciseManagementBtn.classList.remove('active');
+        exerciseFavoriteBtn.classList.add('active');
+        exercisesListDiv.style.display = 'none';
+        exercisesFavoriteListDiv.style.display = 'block';
+    }
+
+    showExercisesList();
+
+    exerciseManagementBtn.addEventListener('click', showExercisesList);
+    exerciseFavoriteBtn.addEventListener('click', showExercisesFavoriteList);
+
 
     // ###############################################
     // カテゴリ選択の結果表示処理(グラフ)

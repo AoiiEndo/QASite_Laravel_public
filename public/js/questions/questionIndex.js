@@ -34,15 +34,16 @@ function fetchQuestions() {
         .catch(error => console.error('Error fetching questions:', error));
 };
 
+// ###############################################
+// 質問一覧出力の背景色を時間で変更
+// ###############################################
 function setBackgroundColorBasedOnTime(element, createdAt) {
     const currentTime = new Date();
     const createdAtDate = new Date(createdAt);
     const diffInMinutes = Math.floor((currentTime - createdAtDate) / (1000 * 60));
 
-    console.log('Difference in minutes:', diffInMinutes);
-
-    const minColor = [123, 174, 250];   // #7baefa
-    const maxColor = [250, 123, 123];   // #fa7b7b
+    const minColor = [123, 174, 250];
+    const maxColor = [250, 123, 123];
 
     const ratio = Math.min(diffInMinutes / (24 * 60), 1);
     const rgb = minColor.map((channel, index) => {
@@ -52,8 +53,6 @@ function setBackgroundColorBasedOnTime(element, createdAt) {
     });
 
     const bgColor = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
-    
-    console.log('Background color:', bgColor);
 
     element.style.backgroundColor = bgColor;
 };
@@ -63,8 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
     questions.forEach(question => {
         const createdAtElement = question.querySelector('.created-at');
         const createdAtTimestamp = createdAtElement.getAttribute('data-timestamp');
-        
-        console.log('Created At:', createdAtTimestamp);
 
         setBackgroundColorBasedOnTime(question, createdAtTimestamp);
     });

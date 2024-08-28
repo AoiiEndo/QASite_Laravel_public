@@ -6,7 +6,7 @@
     <form action="{{ route('questions.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="title">Title <span class="required">*</span></label>
+            <label for="title">Title<span class="required">*</span></label>
             <input type="text" id="title" name="title" required maxlength="255" placeholder="Title">
         </div>
         <div class="form-group">
@@ -16,7 +16,7 @@
             <div id="tag-error" style="color: red; display: none;">Please adhere to the tag constraints.</div>
         </div>
         <div class="form-group">
-            <label for="content">Content <span class="required">* </span>(LaTeXコードを使用する場合は\$で囲んでください。)</label>
+            <label for="content">Content<span class="required">*</span>(LaTeXコードを使用する場合は\$で囲んでください。)</label>
             <textarea id="content" name="content" rows="10" required placeholder="Content"></textarea>
             <div id="preview" class="preview"></div>
         </div>
