@@ -4,26 +4,32 @@
     <div class="container">
         <div class="profile-header">
             <div class="profile-info">
-                <div class="profile-name">
-                    <div>
-                        <h1>Profile</h1>
-                    </div>
-                    <div id="flash-message" style="display:none;" class="alert alert-success" role="alert"></div>
+                <div class="profile-details">
                     <div class="profile-name-box">
-                        <h3> {{ $user->name }}</h3>
+                        <h1>{{ $user->name }}</h1>
+                        <p>User ID: {{ $user->id }}</p>
                     </div>
-                    <div>
-                        <h3>{{ $user->id }}</h3>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <p class="stat-number">{{ $bestAnswerCount }}</p>
+                            <p class="stat-label">ベストアンサー</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">{{ $favoriteExerciseCount }}</p>
+                            <p class="stat-label">お気に入り登録</p>
+                        </div>
                     </div>
                 </div>
-                {{-- <div class="profile-actions">
-                    <a href="{{ route('profile.edit', $user->id) }}" class="btn btn-primary">プロフィール編集</a>
-                </div> --}}
+                <div class="profile-actions">
+                    {{-- <a href="{{ route('profile.edit', $user->id) }}" class="btn btn-primary">プロフィール編集</a> --}}
+                </div>
             </div>
+            <div id="flash-message" style="display:none;" class="alert alert-success" role="alert"></div>
         </div>
         <div class="profile-actions">
             <a href="#" id="my-questions-btn" class="tab-link active">My Questions</a>
             <a href="#" id="tests-btn" class="tab-link">Tests</a>
+            <a href="#" id="my-exercise-btn" class="tab-link">My Exercises</a>
         </div>
         <div class="profile-content" style="background-color: #2b3649; padding: 5%;">
             {{-- 質問一覧タブ --}}
@@ -33,6 +39,10 @@
             {{-- テスト関連タブ --}}
             <div id="tests" class="tab-content" style="display: none;">
                 @include('tests.index')
+            </div>
+            {{-- 演習問題関連タブ --}}
+            <div id="exercises-list" class="tab-content" style="display: none;">
+                @include('exercises._exercisesProfile')
             </div>
         </div>    
     </div>
@@ -44,25 +54,62 @@
         border-color: gold;
     }
     .profile-header {
-        background-color: #2b3649;;
+        background-color: #2b3649;
         padding: 20px;
         margin-bottom: 20px;
         border-radius: 5px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center; /* 中央揃えにしてみます */
     }
+
     .profile-info {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
     }
-    .profile-name {
-        padding: 10px;
+
+    .profile-name-box {
+        margin-bottom: 20px;
     }
-    .profile-name h1 {
+
+    .profile-name-box h1 {
         margin: 0;
+        font-size: 36px;
+        color: #fff;
     }
-    .profile-actions {
-        margin-left: 20px;
+
+    .profile-name-box p {
+        margin: 0;
+        font-size: 16px;
+        color: #d5dce3;
     }
+
+    .profile-stats {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        margin-top: 20px;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .stat-label {
+        font-size: 14px;
+        color: #d5dce3;
+    }
+
+    #flash-message {
+        margin-top: 20px;
+    }
+
     .btn-primary {
         background-color: #007bff;
         color: #fff;

@@ -10,19 +10,19 @@
                 <form id="addTestForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="test_name" class="form-label">テスト名<span style="color: red;">※</span></label>
+                        <label for="test_name" class="form-label">テスト名<span class="required">*</span></label>
                         <input type="text" class="form-control" id="test_name" name="test_name" required>
                     </div>
                     <div class="mb-3">
-                        <label for="category_id" class="form-label">カテゴリ<span style="color: red;">※</span></label>
+                        <label for="category_id" class="form-label">カテゴリ<span class="required">*</span></label>
                         <select class="form-select" id="category_id" name="category_id" required></select>
                     </div>
                     <div class="mb-3">
-                        <label for="test_date" class="form-label">テスト実施日<span style="color: red;">※</span></label>
+                        <label for="test_date" class="form-label">テスト実施日<span class="required">*</span></label>
                         <input type="text" class="form-control" id="test_date" name="test_date" required>
                     </div>
                     <div class="mb-3">
-                        <label for="target_score" class="form-label">目標得点<span style="color: red;">※</span></label>
+                        <label for="target_score" class="form-label">目標得点<span class="required">*</span></label>
                         <input type="text" class="form-control" id="target_score" name="target_score" required>
                     </div>
                     <div class="mb-3">
@@ -48,7 +48,7 @@
                 <form id="addCategoryForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="category_name" class="form-label">カテゴリ名</label>
+                        <label for="category_name" class="form-label">カテゴリ名<span class="required">*</span></label>
                         <input type="text" class="form-control" id="category_name" name="category_name" required>
                     </div>
                     <button type="submit" class="btn btn-primary">追加</button>

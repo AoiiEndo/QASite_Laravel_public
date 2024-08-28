@@ -40,7 +40,7 @@
     </div>
     {{-- テスト結果タブ --}}
     <div id="test-results" class="tab-content" style="display:none;">
-        <h2>テスト結果</h2>
+        <h2>Tests Result</h2>
         <form id="testResultsForm">
             @csrf
             <label for="categories">カテゴリを選択:</label>
