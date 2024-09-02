@@ -19,6 +19,12 @@
     <script>dayjs.extend(dayjs_plugin_relativeTime);dayjs.locale('ja');</script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        function handleLogout(event) {
+            event.preventDefault();
+            document.getElementById('logout-form').submit();
+        }
+    </script>
 </head>
 <body>
     @include('layouts.header')

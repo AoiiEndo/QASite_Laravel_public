@@ -3,6 +3,9 @@
 @section('content')
 <div class="container">
     <h1>Questions</h1>
+    @if (!auth()->check())
+        <h5 style="color: #fe0505">※ログインしないと質問の作成や回答、テスト管理などの機能は使用できません。</h5>
+    @endif
     <form action="{{ route('questions.search') }}" method="POST">
         @csrf
         <input type="text" name="query" placeholder="Search by tag or title" value="{{ old('query', $query ?? '') }}">
@@ -25,13 +28,11 @@
                         <span class="followed-user">
                             {{ $question->user->name }}
                             <span style="color:#fe0505">&hearts;</span>
-                            {{-- <span style="color:#fffb00">&#9733;</span> --}}
                         </span>
                     @else
                         <span class="followed-user">
                             {{ $question->user->name }}
                             <span style="color:#fdfdfd">&hearts;</span>
-                            {{-- <span style="color:#fffb00">&#9733;</span> --}}
                         </span>
                     @endif
                 </div>

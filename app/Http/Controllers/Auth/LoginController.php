@@ -8,7 +8,7 @@ use Auth;
 
 class LoginController extends Controller
 {
-    protected $redirectTo = '/questions';
+    protected $redirectTo = '/';
 
     // ログインフォームを表示
     public function showLoginForm()
