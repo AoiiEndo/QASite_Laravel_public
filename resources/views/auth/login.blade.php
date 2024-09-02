@@ -25,9 +25,13 @@
                 <input id="password" type="password" name="password" class="form-control" required autocomplete="current-password">
             </div>
 
-            <button type="submit" class="btn">ログイン</button>
+            <button type="submit" class="btn" style="background-color: #5fbc07">ログイン</button>
         </form>
-        <a href="{{ route('register') }}" class="btn">新規作成画面へ</a>
+        <a href="{{ route('register') }}" class="btn" style="background-color: #5fbc07">新規作成画面へ</a>
+        <div class="text-center mt-4" style="display: flex; justify-content: center; gap: 20px;">
+            <a href="{{ route('terms') }}" style="color: #fff;">利用規約</a>
+            <a href="{{ route('privacyPolicy') }}" style="color: #fff;">プライバシーポリシー</a>
+        </div>
     </div>
 </body>
 </html>

@@ -13,6 +13,22 @@ body {
     align-items: center;
     height: 100vh;
     background: linear-gradient(to right, #3490dc, #6574cd); /* ログイン画面の背景 */
+    position: relative;
+}
+
+body::before {
+    content: "Arch";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    pointer-events: none;
+    z-index: -1;
+    width: 100%;
 }
 
 .container {
@@ -22,6 +38,8 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
 .form-group {
@@ -32,7 +50,7 @@ body {
     position: relative;
     margin-bottom: 10px;
     padding-left: 10px;
-    border-left: 3px solid #68d391; /* ラベルに線を追加 */
+    border-left: 3px solid #68d391;
 }
 
 .label-with-line label {
@@ -66,10 +84,6 @@ body {
 
 .btn:hover {
     background-color: #2d3748;
-}
-
-.form-group {
-    margin-bottom: 20px;
 }
 
 .alert {

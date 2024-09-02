@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\ProfileController;
@@ -12,9 +11,27 @@ use App\Http\Controllers\TestCategoryController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ExerciseFavoriteController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\InquiryController;
+use \App\Http\Middleware\CheckAdmin;
+
+// 利用規約
+Route::get('/terms', function () {
+    return view('terms');
+})->name('terms');
+
+//プライバシーポリシー
+Route::get('/privacyPolicy', function () {
+    return view('privacyPolicy');
+})->name('privacyPolicy');
+
+// お問い合わせ
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+Route::post('/contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
 
 // ログイン
-// Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -24,7 +41,6 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/', [QuestionController::class, 'index'])->name('questions.index');
-Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
 
 Route::middleware('auth')->group(function () {
     // 質問
@@ -68,6 +84,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/unfollow', [FollowController::class, 'unfollow'])->name('follow.unfollow');
     Route::get('/following', [FollowController::class, 'getFollowing'])->name('following');
     Route::get('/followers', [FollowController::class, 'getFollowers'])->name('followers');
+
+    // お問い合わせ管理画面
+    Route::get('/inquiries', [InquiryController::class, 'index'])->name('inquiries')->middleware(CheckAdmin::class);
+    Route::post('/inquiries/update', [InquiryController::class, 'update'])->name('inquiry.update')->middleware(CheckAdmin::class);
 });
 
 Route::get('/questions/{id}', [QuestionController::class, 'show'])->name('questions.show');
