@@ -6,7 +6,7 @@
     <title>高等教育者向け質問サイト</title>
     <meta property="og:title" content="高等教育者向け質問サイト">
     <meta property="og:description" content="高等教育者のテスト管理や、質問、演習問題の共有を行う総合管理サイト">
-    <meta property="og:image" content="https://educationarch.jp/images/header.svg">
+    <meta property="og:image" content="https://educationarch.jp/images/websitepicture.jpg">
     <meta property="og:url" content="https://educationarch.jp/">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
