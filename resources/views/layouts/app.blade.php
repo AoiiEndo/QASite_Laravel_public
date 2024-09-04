@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://educationarch.jp/favicon.png" sizes="32x32" type="image/png">
     <title>高等教育者向け質問サイト</title>
     <meta property="og:title" content="高等教育者向け質問サイト">
     <meta property="og:description" content="高等教育者のテスト管理や、質問、演習問題の共有を行う総合管理サイト">
