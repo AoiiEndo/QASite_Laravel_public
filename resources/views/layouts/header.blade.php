@@ -11,7 +11,7 @@
         @endauth
     </nav>
     @auth
-        <div class="hamburger-menu" onclick="toggleDropdown()">
+        <div class="hamburger-menu" id="hamburger-menu">
             <span>{{ Auth::user()->name ?? 'guest' }}</span>
             <div class="dropdown-menu" style="background-color: #1a202c;">
                 <ul class="dropdown-menu-list">
@@ -22,7 +22,7 @@
                         <a href="{{ route('inquiries') }}" class="dropdown-item">お問い合わせ管理</a>
                     @endif
                     <li>
-                        <a class="dropdown-item" href="#" onclick="handleLogout(event)">ログアウト</a>
+                        <a class="dropdown-item" href="#" id="logout-link">ログアウト</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>

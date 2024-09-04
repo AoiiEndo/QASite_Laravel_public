@@ -7,6 +7,17 @@ window.routes = {
 };
 
 // ###############################################
+// 詳細画面遷移
+// ###############################################
+document.getElementById('exercises-list').addEventListener('click', function(event) {
+    const exerciseDiv = event.target.closest('.exercise');
+    if (exerciseDiv) {
+        const exerciseId = exerciseDiv.getAttribute('data-exercise-id');
+        window.location.href = `/exercises/${exerciseId}`;
+    }
+});
+
+// ###############################################
 // LaTeX表示
 // ###############################################
 document.getElementById('content').addEventListener('input', function() {
@@ -54,9 +65,9 @@ document.getElementById('saveExerciseBtn').addEventListener('click', function ()
 
                     data.exercises.forEach(exercise => {
                         const exerciseDiv = document.createElement('div');
-                        exerciseDiv.classList.add('question');
+                        exerciseDiv.classList.add('question', 'exercise');
                         exerciseDiv.id = `exercise-${exercise.id}`;
-                        exerciseDiv.setAttribute('onclick', `location.href='/exercises/${exercise.id}'`);
+                        exerciseDiv.setAttribute('data-exercise-id', exercise.id);
                         const createdAtFormatted = dayjs(exercise.created_at).fromNow();
                         
                         exerciseDiv.innerHTML = `

@@ -97,6 +97,8 @@ class QuestionController extends Controller
                             ->orderBy('created_at', 'desc')
                             ->paginate(25);
 
-        return view('questions.index', compact('questions', 'query'));
+        $followedUserIds = Auth::check() ? Auth::user()->follows->pluck('followed_user_id')->toArray() : [];
+
+        return view('questions.index', compact('questions', 'query', 'followedUserIds'));
     }
 }

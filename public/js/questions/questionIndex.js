@@ -34,6 +34,17 @@ function fetchQuestions() {
         .catch(error => console.error('Error fetching questions:', error));
 };
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.question').forEach(function(element) {
+        element.addEventListener('click', function() {
+            const url = this.getAttribute('data-href');
+            if (url) {
+                window.location.href = url;
+            }
+        });
+    });
+});
+
 // ###############################################
 // 質問一覧出力の背景色を時間で変更
 // ###############################################

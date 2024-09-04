@@ -3,7 +3,7 @@
         <p>該当する演習問題はありません。</p>
     @else
         @foreach ($exercises as $exercise)
-            <div class="question" id="exercise-{{ $exercise->id }}" onclick="location.href='{{ route('exercises.show', ['id' => $exercise->id]) }}'">
+            <div class="question exercise" id="exercise-{{ $exercise->id }}" data-exercise-id="{{ $exercise->id }}">
                 <div class="question-header">
                     <h2>{{ $exercise->title }}</h2>
                 </div>
