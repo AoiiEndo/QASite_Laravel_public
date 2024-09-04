@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>高等教育者向け質問サイト</title>
+    <meta property="og:title" content="高等教育者向け質問サイト">
+    <meta property="og:description" content="高等教育者のテスト管理や、質問、演習問題の共有を行う総合管理サイト">
+    <meta property="og:image" content="https://educationarch.jp/images/header.svg">
+    <meta property="og:url" content="https://educationarch.jp/">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('styles')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
