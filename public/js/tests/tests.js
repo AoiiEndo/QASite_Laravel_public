@@ -7,6 +7,32 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // ###############################################
+    // 詳細ページ表示
+    // ###############################################
+    document.querySelectorAll('.question').forEach(function(element) {
+        element.addEventListener('click', function() {
+            const url = this.getAttribute('data-url');
+            window.location.href = url;
+        });
+    });
+    document.querySelectorAll('.exercise').forEach(function(element) {
+        element.addEventListener('click', function() {
+            const exerciseId = this.getAttribute('data-exercise-id');
+            window.location.href = `/exercises/${exerciseId}`;
+        });
+    });
+    document.querySelectorAll('.favorite-exercise').forEach(function(element) {
+        element.addEventListener('click', function() {
+            const url = this.getAttribute('data-url'); 
+            window.location.href = url;
+        });
+    });
+
+    // その他の初期化コード
+    dayjs.extend(dayjs_plugin_relativeTime);
+    dayjs.locale('ja');
+
+    // ###############################################
     // タブの表示切り替え(質問 & テスト)
     // ###############################################
     const myQuestionsBtn = document.getElementById('my-questions-btn');

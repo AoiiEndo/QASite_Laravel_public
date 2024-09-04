@@ -13,7 +13,7 @@
     </form>
     <div id="question-list">
         @foreach($questions as $question)
-            <div class="question {{ !is_null($question->best_answer_id) ? 'resolved' : '' }}" id="question-{{ $question->id }}" onclick="location.href='{{ route('questions.show', ['id' => $question->id]) }}'">
+        <div class="question {{ !is_null($question->best_answer_id) ? 'resolved' : '' }}" id="question-{{ $question->id }}" data-href="{{ route('questions.show', ['id' => $question->id]) }}">
                 <div class="question-header">
                     <h2>{{ $question->title }}</h2>
                     <div class="tags">

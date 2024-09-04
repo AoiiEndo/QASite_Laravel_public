@@ -21,7 +21,9 @@ class SecurityHeaders
         $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
 
         // Content Security Policy (CSP)
-        $response->headers->set('Content-Security-Policy', "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://cdn.datatables.net; style-src 'self' https://cdn.jsdelivr.net https://cdn.datatables.net; img-src 'self' data:; font-src 'self' https://cdn.jsdelivr.net; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'");
+        $nonce = base64_encode(random_bytes(16));
+        $response->headers->set('Content-Security-Policy', "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://cdn.datatables.net 'nonce-{$nonce}'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.datatables.net; img-src 'self' data:; font-src 'self' https://cdn.jsdelivr.net; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'");
+        $request->session()->put('csp_nonce', $nonce);
 
         // X-Frame-Options
         $response->headers->set('X-Frame-Options', 'SAMEORIGIN');

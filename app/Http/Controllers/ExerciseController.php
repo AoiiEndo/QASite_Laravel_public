@@ -56,7 +56,6 @@ class ExerciseController extends Controller
         $user = auth()->user();
         $exercises = Exercise::public()
                     ->with('user')
-                    ->where('user_id', $user->id)
                     ->latest()
                     ->get();
 
